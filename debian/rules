@@ -1,0 +1,15 @@
+#!/usr/bin/make -f
+
+override_dh_prep:
+	# Workaround for issue https://github.com/spotify/dh-virtualenv/issues/200
+	sed -i 's/^-e /git+/g' requirements.txt
+	dh_prep
+
+override_dh_clean:
+	sed -i 's/^git+/-e /g' requirements.txt
+	dh_clean
+
+%:
+	dh $@ --with python-virtualenv --python /usr/bin/python3.4
+
+

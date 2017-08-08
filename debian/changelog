@@ -1,0 +1,5 @@
+awscli (1.11.129-deb) unstable; urgency=low
+
+  * Initial build
+
+ -- Cyrill Troxler <cyrill.troxler@nine.ch>  Mon, 07 Aug 2017 15:00:00 +0200
