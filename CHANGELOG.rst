@@ -2,6 +2,195 @@
 CHANGELOG
 =========
 
+1.11.155
+========
+
+* api-change:``ec2``: Update ec2 command to latest version
+* api-change:``iam``: Update iam command to latest version
+* api-change:``ses``: Update ses command to latest version
+
+
+1.11.154
+========
+
+* api-change:``apigateway``: Update apigateway command to latest version
+
+
+1.11.153
+========
+
+* api-change:``codebuild``: Update codebuild command to latest version
+* api-change:``organizations``: Update organizations command to latest version
+* api-change:``servicecatalog``: Update servicecatalog command to latest version
+
+
+1.11.152
+========
+
+* api-change:``ec2``: Update ec2 command to latest version
+* api-change:``autoscaling``: Update autoscaling command to latest version
+* api-change:``events``: Update events command to latest version
+* bugfix:CloudFormation: CloudFormation will no longer fail for deploys that take longer than 10 minutes. Fixes `#2754 <https://github.com/aws/aws-cli/issues/2754>`__
+* api-change:``batch``: Update batch command to latest version
+
+
+1.11.151
+========
+
+* api-change:``ec2``: Update ec2 command to latest version
+
+
+1.11.150
+========
+
+* api-change:``devicefarm``: Update devicefarm command to latest version
+
+
+1.11.149
+========
+
+* api-change:``logs``: Update logs command to latest version
+
+
+1.11.148
+========
+
+* api-change:``application-autoscaling``: Update application-autoscaling command to latest version
+* api-change:``lex-models``: Update lex-models command to latest version
+* api-change:``ec2``: Update ec2 command to latest version
+* api-change:``route53``: Update route53 command to latest version
+* api-change:``elbv2``: Update elbv2 command to latest version
+
+
+1.11.147
+========
+
+* api-change:``budgets``: Update budgets command to latest version
+
+
+1.11.146
+========
+
+* api-change:``codestar``: Update codestar command to latest version
+
+
+1.11.145
+========
+
+* api-change:``ssm``: Update ssm command to latest version
+* api-change:``mobile``: Update mobile command to latest version
+* api-change:``gamelift``: Update gamelift command to latest version
+
+
+1.11.144
+========
+
+* api-change:``ec2``: Update ec2 command to latest version
+* api-change:``codebuild``: Update codebuild command to latest version
+* api-change:``elbv2``: Update elbv2 command to latest version
+* api-change:``lex-models``: Update lex-models command to latest version
+
+
+1.11.143
+========
+
+* api-change:``organizations``: Update organizations command to latest version
+* api-change:``application-autoscaling``: Update application-autoscaling command to latest version
+
+
+1.11.142
+========
+
+* api-change:``config``: Update config command to latest version
+* api-change:``ec2``: Update ec2 command to latest version
+
+
+1.11.141
+========
+
+* api-change:``cloudformation``: Update cloudformation command to latest version
+* api-change:``rds``: Update rds command to latest version
+* api-change:``gamelift``: Update gamelift command to latest version
+
+
+1.11.140
+========
+
+* api-change:``rekognition``: Update rekognition command to latest version
+
+
+1.11.139
+========
+
+* api-change:``appstream``: Update appstream command to latest version
+
+
+1.11.138
+========
+
+* api-change:``ssm``: Update ssm command to latest version
+
+
+1.11.137
+========
+
+* api-change:``route53``: Update route53 command to latest version
+* enhancement:Cloudformation: Add `--role-arn` and `--notification-arns` parameters to cloudformation deploy.
+* api-change:``firehose``: Update firehose command to latest version
+
+
+1.11.136
+========
+
+* api-change:``gamelift``: Update gamelift command to latest version
+
+
+1.11.135
+========
+
+* api-change:``ec2``: Update ec2 command to latest version
+
+
+1.11.134
+========
+
+* api-change:``batch``: Update batch command to latest version
+* api-change:``cloudhsmv2``: Update cloudhsmv2 command to latest version
+* api-change:``efs``: Update efs command to latest version
+* api-change:``ssm``: Update ssm command to latest version
+* api-change:``storagegateway``: Update storagegateway command to latest version
+* api-change:``mgh``: Update mgh command to latest version
+* api-change:``glue``: Update glue command to latest version
+
+
+1.11.133
+========
+
+* api-change:``ec2``: Update ec2 command to latest version
+* api-change:``cognito-idp``: Update cognito-idp command to latest version
+* api-change:``codedeploy``: Update codedeploy command to latest version
+
+
+1.11.132
+========
+
+* api-change:``codebuild``: Update codebuild command to latest version
+* api-change:``clouddirectory``: Update clouddirectory command to latest version
+
+
+1.11.131
+========
+
+* api-change:``rds``: Update rds command to latest version
+
+
+1.11.130
+========
+
+* bugfix:s3: Fixed bug causing progress to not display if unicode characters appeared in the path. Fixes `#2738 <https://github.com/aws/aws-cli/issues/2738>`__.
+* api-change:``elasticbeanstalk``: Update elasticbeanstalk command to latest version
+
+
 1.11.129
 ========
 

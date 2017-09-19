@@ -70,7 +70,8 @@ class Deployer(object):
                 raise e
 
     def create_changeset(self, stack_name, cfn_template,
-                         parameter_values, capabilities):
+                         parameter_values, capabilities, role_arn,
+                         notification_arns):
         """
         Call Cloudformation to create a changeset and wait for it to complete
 
@@ -96,16 +97,22 @@ class Deployer(object):
             parameter_values = [x for x in parameter_values
                                 if not x.get("UsePreviousValue", False)]
 
+        kwargs = {
+            'ChangeSetName': changeset_name,
+            'StackName': stack_name,
+            'TemplateBody': cfn_template,
+            'ChangeSetType': changeset_type,
+            'Parameters': parameter_values,
+            'Capabilities': capabilities,
+            'Description': description,
+        }
+        # don't set these arguments if not specified to use existing values
+        if role_arn is not None:
+            kwargs['RoleARN'] = role_arn
+        if notification_arns is not None:
+            kwargs['NotificationARNs'] = notification_arns
         try:
-            resp = self._client.create_change_set(
-                    ChangeSetName=changeset_name,
-                    StackName=stack_name,
-                    TemplateBody=cfn_template,
-                    ChangeSetType=changeset_type,
-                    Parameters=parameter_values,
-                    Capabilities=capabilities,
-                    Description=description
-            )
+            resp = self._client.create_change_set(**kwargs)
             return ChangeSetResult(resp["Id"], changeset_type)
         except Exception as ex:
             LOG.debug("Unable to create changeset", exc_info=ex)
@@ -125,9 +132,10 @@ class Deployer(object):
         # Wait for changeset to be created
         waiter = self._client.get_waiter("change_set_create_complete")
         # Poll every 5 seconds. Changeset creation should be fast
-        waiter.config.delay = 5
+        waiter_config = {'Delay': 5}
         try:
-            waiter.wait(ChangeSetName=changeset_id, StackName=stack_name)
+            waiter.wait(ChangeSetName=changeset_id, StackName=stack_name,
+                        WaiterConfig=waiter_config)
         except botocore.exceptions.WaiterError as ex:
             LOG.debug("Create changeset waiter exception", exc_info=ex)
 
@@ -171,20 +179,25 @@ class Deployer(object):
 
         # Poll every 5 seconds. Optimizing for the case when the stack has only
         # minimal changes, such the Code for Lambda Function
-        waiter.config.delay = 5
+        waiter_config = {
+            'Delay': 5,
+            'MaxAttempts': 720,
+        }
 
         try:
-            waiter.wait(StackName=stack_name)
+            waiter.wait(StackName=stack_name, WaiterConfig=waiter_config)
         except botocore.exceptions.WaiterError as ex:
             LOG.debug("Execute changeset waiter exception", exc_info=ex)
 
             raise exceptions.DeployFailedError(stack_name=stack_name)
 
     def create_and_wait_for_changeset(self, stack_name, cfn_template,
-                                      parameter_values, capabilities):
+                                      parameter_values, capabilities, role_arn,
+                                      notification_arns):
 
         result = self.create_changeset(
-                stack_name, cfn_template, parameter_values, capabilities)
+                stack_name, cfn_template, parameter_values, capabilities,
+                role_arn, notification_arns)
 
         self.wait_for_changeset(result.changeset_id, stack_name)
 
