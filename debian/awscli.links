@@ -1,1 +1,1 @@
-/usr/share/python/awscli/bin/aws /usr/bin/aws
+/opt/venvs/awscli/bin/aws /usr/bin/aws

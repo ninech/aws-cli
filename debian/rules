@@ -1,5 +1,8 @@
 #!/usr/bin/make -f
 
+# make sure to use new /opt/venvs path on old dh-virtualenv versions
+export DH_VIRTUALENV_INSTALL_ROOT=/opt/venvs/
+
 override_dh_prep:
 	# Workaround for issue https://github.com/spotify/dh-virtualenv/issues/200
 	sed -i 's/^-e /git+/g' requirements.txt
@@ -10,6 +13,5 @@ override_dh_clean:
 	dh_clean
 
 %:
-	dh $@ --with python-virtualenv --python /usr/bin/python3.4
-
+	dh $@ --with python-virtualenv --python /usr/bin/python3
 
