@@ -1,3 +1,9 @@
+awscli (1.11.155) unstable; urgency=low
+
+  * Update to 1.11.155
+
+ -- Cyrill Troxler <cyrill.troxler@nine.ch>  Mon, 19 Sep 2017 14:39:00 +0200
+
 awscli (1.11.129) unstable; urgency=low
 
   * Initial build
