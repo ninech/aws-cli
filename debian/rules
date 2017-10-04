@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 
-# make sure to use new /opt/venvs path on old dh-virtualenv versions
-export DH_VIRTUALENV_INSTALL_ROOT=/opt/venvs/
+# set install path
+export DH_VIRTUALENV_INSTALL_ROOT=/usr/lib
 
 override_dh_prep:
 	# Workaround for issue https://github.com/spotify/dh-virtualenv/issues/200
