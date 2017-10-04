@@ -1,1 +1,1 @@
-/opt/venvs/awscli/bin/aws /usr/bin/aws
+/usr/lib/awscli/bin/aws /usr/bin/aws
